@@ -24,7 +24,7 @@ Without whitening, the Ki67-positive F1 varies by 44 points across seven encoder
 ## Installation
  
 ```bash
-git clone https://github.com/<your-username>/K-CLUE.git
+git clone https://github.com/anagilvieira/K-CLUE.git
 cd K-CLUE
 conda create -n kclue python=3.10 -y
 conda activate kclue
@@ -72,7 +72,7 @@ python analysis/evaluate_encoders.py --config configs/mist.yaml --run pca90_whit
 Useful options:
  
 ```bash
-python main.py --config configs/mist.yaml --no-whiten                  # no whitening
+python main.py --config configs/mist.yaml --no-whiten                   # no whitening
 python main.py --config configs/mist.yaml --features uni2 virchow2      # chosen encoders
 python main.py --config configs/mist.yaml --mode isolated_white         # other crop fill
 python main.py --config configs/mist.yaml \
@@ -92,3 +92,7 @@ K-CLUE/
 ├── configs/            # one YAML per dataset
 └── analysis/           # encoder evaluation, linear probe
 ```
+
+## License
+ 
+The code is released under the MIT License (see [LICENSE](LICENSE)). Pretrained models and datasets are subject to their own licenses.
