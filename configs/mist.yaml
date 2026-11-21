@@ -1,0 +1,35 @@
+# MIST (Ki67 subset): 56 tiles of 256 x 256 px at 20x
+dataset: MIST
+tiles_dir: data/MIST/tiles            # one RGB .png per tile
+image_ext: .png
+output_dir: outputs/MIST
+
+segmentation:
+  model: cpdino-vitb                   # Cellpose-DINOv3 ViT-B
+  diameter: null
+  flow_threshold: 0.4
+  cellprob_threshold: 0.0
+  tile_norm_blocksize: 0
+
+crops:
+  mode: isolated_median                # isolated_median | isolated_white | real | centered
+  margin: 1                            # px around the largest nucleus -> 64 x 64 crops on MIST
+  size: null                           # null = derived from the data; an int forces it
+  mask_dilate: 0
+
+encoders:
+  hovernext_ckpt: checkpoints/hovernext/lizard_convnextv2_base/train/best_model
+  batch_size: 256
+
+clustering:
+  var_cut: 0.90                        # PCA variance kept
+  k: 2
+  n_init: 20
+  seeds: [0, 1, 2, 3, 4]
+
+evaluation:
+  gt_path: data/MIST/56_ANN_MIST.txt   # SlideScore export
+  gt_format: slidescore
+  gt_canvas: 512                       # annotations made on a 512 px canvas over 256 px tiles
+  um_per_px: 0.4661
+  tol_um: 3.0

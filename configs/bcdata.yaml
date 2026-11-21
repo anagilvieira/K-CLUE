@@ -1,0 +1,35 @@
+# BCData test split at 40x
+dataset: BCData
+tiles_dir: data/BCData/images/test
+image_ext: .png
+output_dir: outputs/BCData
+
+segmentation:
+  model: cpdino-vitb
+  diameter: null
+  flow_threshold: 0.4
+  cellprob_threshold: 0.0
+  tile_norm_blocksize: 0
+
+crops:
+  mode: isolated_median
+  margin: 1
+  size: null
+  mask_dilate: 0
+
+encoders:
+  hovernext_ckpt: checkpoints/hovernext/lizard_convnextv2_base/train/best_model
+  batch_size: 256
+
+clustering:
+  var_cut: 0.90
+  k: 2
+  n_init: 20
+  seeds: [0, 1, 2, 3, 4]
+
+evaluation:
+  gt_path: data/BCData/centroids_640.csv    # made by prepare_bcdata_gt.py
+  gt_format: centroids
+  gt_canvas: 640                            # GT coordinates in the 640 x 640 image frame
+  um_per_px: 0.2239
+  tol_um: 3.0
