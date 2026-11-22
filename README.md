@@ -14,13 +14,8 @@ K-CLUE is an **annotation-free** pipeline that separates Ki67-positive from Ki67
 3. **Representation.** A frozen pretrained encoder embeds each crop.
 4. **PCA + whitening.** The components that explain 90% of the variance are kept, and each one is rescaled to unit variance.
 5. **Clustering.** k-means (k = 2) runs on the pooled nuclei of all tiles. The cluster with the higher mean DAB optical density is labelled Ki67-positive.
-Without whitening, the Ki67-positive F1 varies by 44 points across seven encoders. With whitening, the spread is 1 point.
- 
-| Dataset | Ki67+ F1 (%) | Ki67− F1 (%) |
-|---------|:------------:|:------------:|
-| MIST    | 85.00        | 81.91        |
-| BCData  | 79.59        | 81.16        |
- 
+
+
 ## Installation
  
 ```bash
